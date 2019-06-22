@@ -7,13 +7,22 @@ import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
+import android.util.Log
+import com.google.android.gms.tasks.OnFailureListener
+import com.google.firebase.firestore.DocumentReference
+import com.google.android.gms.tasks.OnSuccessListener
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.android.gms.maps.model.MarkerOptions
+
+
+
+
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
     override fun onMarkerClick(p0: Marker?) = false
@@ -74,6 +83,38 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarker
                 val currentLatLng = LatLng(location.latitude, location.longitude)
                 map.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 12f))
             }
+
+            val db = FirebaseFirestore.getInstance()
+
+            val user:HashMap<String, Double> = HashMap();
+            user.put("id", 0.0)
+            user.put("latitude", location.latitude)
+            user.put("longitude", location.longitude)
+
+            // Add a new document with a generated ID
+            db.collection("users")
+                .add(user as Map<String, Any>)
+                .addOnSuccessListener(OnSuccessListener<DocumentReference> { documentReference ->
+                    Log.d("tag","DocumentSnapshot added with ID: " + documentReference.id)
+                })
+                .addOnFailureListener(OnFailureListener { e ->
+                    Log.w("tag","Error adding document", e)
+                })
+
+            db.collection("users")
+                .get()
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        for (document in task.result!!) {
+                            var lat:Double = document.data.get("latitude") as Double
+                            var lng:Double = document.data.get("longitude") as Double
+                            map.addMarker(MarkerOptions().position(LatLng(lat, lng)).title("Onibus"));
+                            Log.d("tag", document.id + " => " + document.data)
+                        }
+                    } else {
+                        Log.w("tag", "Error getting documents.", task.exception)
+                    }
+                }
         }
 
     }

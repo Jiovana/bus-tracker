@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1060085014080",
+    "firebase_url": "https://swift-doodad-242820.firebaseio.com",
+    "project_id": "swift-doodad-242820",
+    "storage_bucket": "swift-doodad-242820.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1060085014080:android:b2d68bd6abd7ed0c",
+        "android_client_info": {
+          "package_name": "com.example.mapsapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1060085014080-e2ukh5jstebej53njhiqsh7g2j1kv6hh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mapsapplication",
+            "certificate_hash": "cc5480c05f44e4597827f65c54c4a3cbcf1c9623"
+          }
+        },
+        {
+          "client_id": "1060085014080-hpid9jajurbco3ai5eg7o8osiqrcscl9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDg5tkWymNrRCK-hylhLVP1i3gvR7UgwAY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1060085014080-hpid9jajurbco3ai5eg7o8osiqrcscl9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
