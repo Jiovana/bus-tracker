@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              tools:ignore="contentDescription">
+
+    <TextView
+            android:text="Você é um usuário ou um ônibus?"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/textView" android:visibility="visible"
+            android:textColor="#000000" android:textSize="24sp" android:fontFamily="sans-serif"
+    />
+    <Space
+            android:layout_width="match_parent"
+            android:layout_height="26dp" android:layout_weight="0" android:longClickable="false"
+            android:layout_margin="20dp"/>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <Space
+                android:layout_width="23dp"
+                android:layout_height="32dp" android:layout_weight="0" android:longClickable="false"
+                android:layout_margin="20dp"/>
+        <Button
+                android:text="Ônibus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/button2" android:background="#9B1C5E"
+                android:textColor="#FFFDFD"
+                android:src="@drawable/bus_solid"/>
+        <Space
+                android:layout_width="20dp"
+                android:layout_height="14dp" android:layout_weight="0" android:longClickable="false"
+                android:layout_margin="20dp"/>
+        <Button
+                android:text="Usuário"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/button" android:background="#9B1C5E"
+                android:textColor="#FFFFFF"
+                android:src="@drawable/user_regular"
+                tools:visibility="visible"/>
+    </LinearLayout>
+
+</LinearLayout>
